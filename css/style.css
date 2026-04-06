@@ -98,6 +98,7 @@ html {
   scroll-behavior: smooth;
   font-size: 16px;
   overflow-x: hidden;
+  background: var(--navy);
 }
 
 body {
@@ -109,7 +110,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   transition: background var(--duration-slow) var(--ease),
               color var(--duration-slow) var(--ease);
-  padding-top: var(--nav-height);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -592,6 +592,7 @@ body::before {
 /* ── Sponsors Ticker ───────────────────────────────────── */
 .ticker-wrap {
   background: var(--navy-deep);
+  margin-top: var(--nav-height);
   border-bottom: 2px solid var(--gold);
   padding: 7px 0;
   overflow: hidden;
