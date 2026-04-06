@@ -33,16 +33,34 @@
 </head>
 <body>
 
+<!-- ── Site Header ────────────────────────────────────────── -->
 <header class="site-header">
   <div class="container">
-    <nav class="navbar">
-      <a href="index.html" class="logo">AI<span>Trade</span>Hub<small>Smart AI Trading</small></a>
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+      <a href="index.html" class="logo"><span class="logo-ai">AI</span><span class="logo-trade">TradeHub</span><small>Smart AI Trading</small></a>
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="blog.html" class="active">Blog</a></li>
+        <li class="nav-dropdown">
+          <a href="#">Categories <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></a>
+          <div class="dropdown-menu">
+            <a href="blog.html?cat=ai"><span class="cat-dot cat-ai"></span> AI Tools</a>
+            <a href="blog.html?cat=crypto"><span class="cat-dot cat-crypto"></span> Crypto</a>
+            <a href="blog.html?cat=trading"><span class="cat-dot cat-trading"></span> Trading</a>
+            <a href="blog.html?cat=finance"><span class="cat-dot cat-finance"></span> Finance</a>
+          </div>
+        </li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
-        <li><a href="blog.html" class="btn btn-primary btn-sm">Explore Articles</a></li>
+        <li>
+          <div class="nav-actions">
+            <button class="dark-mode-btn" aria-label="Toggle dark mode">
+              <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+              <svg class="icon-sun"  width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/></svg>
+            </button>
+            <a href="blog.html" class="btn btn-primary btn-sm">Explore Articles</a>
+          </div>
+        </li>
       </ul>
       <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -51,7 +69,31 @@
   </div>
 </header>
 
-<!-- ── Sponsors Ticker ──────────────────────────────────── -->
+<!-- ── Mobile Overlay ───────────────────────────────────── -->
+<div class="mobile-overlay">
+  <ul class="mobile-nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <div class="mobile-cats">
+      <a href="blog.html?cat=ai"><span class="cat-dot cat-ai" style="display:inline-block;margin-right:8px;"></span>AI Tools</a>
+      <a href="blog.html?cat=crypto"><span class="cat-dot cat-crypto" style="display:inline-block;margin-right:8px;"></span>Crypto</a>
+      <a href="blog.html?cat=trading"><span class="cat-dot cat-trading" style="display:inline-block;margin-right:8px;"></span>Trading</a>
+      <a href="blog.html?cat=finance"><span class="cat-dot cat-finance" style="display:inline-block;margin-right:8px;"></span>Finance</a>
+    </div>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="mobile-actions">
+    <a href="blog.html" class="btn btn-primary">Explore Articles</a>
+    <div class="dark-toggle-row dark-mode-btn">
+      <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+      <svg class="icon-sun"  width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/></svg>
+      <span>Toggle Dark Mode</span>
+    </div>
+  </div>
+</div>
+
+<!-- ── Sponsors Ticker ─────────────────────────────────── -->
 <div class="ticker-wrap">
   <div class="ticker-track" id="tickerTrack">
     <span class="ticker-item">🤝 <a href="#">Your Brand Here</a></span>
@@ -62,11 +104,12 @@
     <span class="ticker-dot"></span>
     <span class="ticker-item">💼 <a href="#">Sponsor This Space</a></span>
     <span class="ticker-dot"></span>
+    <span class="ticker-item">🤖 <a href="#">AI Trading Research</a></span>
+    <span class="ticker-dot"></span>
   </div>
 </div>
 
-<!-- AdSense Leaderboard 728x90: paste your AdSense code here when ready -->
-
+<!-- ── Page Hero ───────────────────────────────────────── -->
 <div class="page-hero">
   <div class="container">
     <nav class="breadcrumb" aria-label="Breadcrumb">
@@ -79,6 +122,7 @@
   </div>
 </div>
 
+<!-- ── Category Bar ────────────────────────────────────── -->
 <nav class="categories-bar" aria-label="Content categories">
   <div class="container">
     <a href="blog.html?cat=ai" class="cat-link"><span class="cat-dot cat-ai"></span> AI Tools</a>
@@ -88,31 +132,49 @@
   </div>
 </nav>
 
+<!-- ── Main Content ─────────────────────────────────────── -->
 <section class="section">
   <div class="container">
     <div class="page-layout">
 
-      <!-- Main Content -->
       <main>
-        <!-- Filter Bar -->
-        <div class="blog-filter-bar" role="group" aria-label="Filter by category">
-          <button class="filter-btn active" data-filter="all">All</button>
-          <button class="filter-btn" data-filter="ai">AI Tools</button>
-          <button class="filter-btn" data-filter="crypto">Crypto</button>
-          <button class="filter-btn" data-filter="trading">Trading</button>
-          <button class="filter-btn" data-filter="finance">Finance</button>
+        <!-- Controls row -->
+        <div class="blog-controls animate-on-scroll">
+          <div class="blog-filter-bar" role="group" aria-label="Filter by category">
+            <button class="filter-btn active" data-filter="all">
+              All <span class="filter-count">6</span>
+            </button>
+            <button class="filter-btn" data-filter="ai">
+              AI Tools <span class="filter-count">2</span>
+            </button>
+            <button class="filter-btn" data-filter="crypto">
+              Crypto <span class="filter-count">2</span>
+            </button>
+            <button class="filter-btn" data-filter="trading">
+              Trading <span class="filter-count">1</span>
+            </button>
+            <button class="filter-btn" data-filter="finance">
+              Finance <span class="filter-count">1</span>
+            </button>
+          </div>
+
+          <div class="blog-search">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="search" placeholder="Search articles…" aria-label="Search articles" />
+          </div>
         </div>
 
         <div class="articles-grid">
 
-          <!-- Article 1 -->
+          <!-- Article 1 — AI Tools -->
           <article class="article-card" data-category="ai">
             <div class="card-thumb">
               <div class="card-thumb-placeholder">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="36" height="36"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:rgba(212,160,23,.6)"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
                 <span>AI Tools</span>
               </div>
               <div class="card-badge-wrap"><span class="badge badge-ai">AI Tools</span></div>
+              <div class="card-read-time">8 min</div>
             </div>
             <div class="card-body">
               <div class="card-meta"><span>Jan 14, 2025</span><span>·</span><span>8 min read</span></div>
@@ -120,19 +182,20 @@
               <p class="card-excerpt">Machine learning models now execute millions of trades per second. We break down the technologies reshaping equity markets and what retail traders must know.</p>
               <div class="card-footer">
                 <a href="article.html" class="read-more">Read Article <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-                <span>James Holt</span>
+                <div class="card-author"><div class="author-circle">JH</div><span>James Holt</span></div>
               </div>
             </div>
           </article>
 
-          <!-- Article 2 -->
+          <!-- Article 2 — Crypto -->
           <article class="article-card" data-category="crypto">
             <div class="card-thumb">
               <div class="card-thumb-placeholder" style="background:linear-gradient(135deg,#2a1a00,#4a3010)">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="1.5" width="36" height="36"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
                 <span style="color:rgba(245,158,11,.5)">Crypto</span>
               </div>
               <div class="card-badge-wrap"><span class="badge badge-crypto">Crypto</span></div>
+              <div class="card-read-time">6 min</div>
             </div>
             <div class="card-body">
               <div class="card-meta"><span>Jan 10, 2025</span><span>·</span><span>6 min read</span></div>
@@ -140,19 +203,20 @@
               <p class="card-excerpt">We benchmarked the leading algorithmic crypto bots over 90 days — testing backtesting accuracy, live performance, fee structures, and risk management tools.</p>
               <div class="card-footer">
                 <a href="blog.html" class="read-more">Read Article <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-                <span>Sara Chen</span>
+                <div class="card-author"><div class="author-circle author-sc">SC</div><span>Sara Chen</span></div>
               </div>
             </div>
           </article>
 
-          <!-- Article 3 -->
+          <!-- Article 3 — Trading -->
           <article class="article-card" data-category="trading">
             <div class="card-thumb">
               <div class="card-thumb-placeholder" style="background:linear-gradient(135deg,#001a10,#003320)">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="1.5" width="36" height="36"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="1.5"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
                 <span style="color:rgba(16,185,129,.5)">Trading</span>
               </div>
               <div class="card-badge-wrap"><span class="badge badge-trading">Trading</span></div>
+              <div class="card-read-time">10 min</div>
             </div>
             <div class="card-body">
               <div class="card-meta"><span>Jan 7, 2025</span><span>·</span><span>10 min read</span></div>
@@ -160,19 +224,20 @@
               <p class="card-excerpt">Natural language processing can parse earnings calls and breaking news in milliseconds — giving systematic traders an edge that wasn't possible just three years ago.</p>
               <div class="card-footer">
                 <a href="blog.html" class="read-more">Read Article <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-                <span>Marcus Webb</span>
+                <div class="card-author"><div class="author-circle author-mw">MW</div><span>Marcus Webb</span></div>
               </div>
             </div>
           </article>
 
-          <!-- Article 4 -->
+          <!-- Article 4 — Finance -->
           <article class="article-card" data-category="finance">
             <div class="card-thumb">
               <div class="card-thumb-placeholder" style="background:linear-gradient(135deg,#001028,#002050)">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="1.5" width="36" height="36"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
                 <span style="color:rgba(59,130,246,.5)">Finance</span>
               </div>
               <div class="card-badge-wrap"><span class="badge badge-finance">Finance</span></div>
+              <div class="card-read-time">7 min</div>
             </div>
             <div class="card-body">
               <div class="card-meta"><span>Jan 3, 2025</span><span>·</span><span>7 min read</span></div>
@@ -180,19 +245,20 @@
               <p class="card-excerpt">A deep look at how modern robo-advisors use reinforcement learning for asset allocation — and whether the data shows they can consistently outperform human managers.</p>
               <div class="card-footer">
                 <a href="blog.html" class="read-more">Read Article <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-                <span>Elena Ross</span>
+                <div class="card-author"><div class="author-circle author-er">ER</div><span>Elena Ross</span></div>
               </div>
             </div>
           </article>
 
-          <!-- Article 5 -->
+          <!-- Article 5 — AI Tools -->
           <article class="article-card" data-category="ai">
             <div class="card-thumb">
               <div class="card-thumb-placeholder">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="36" height="36"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:rgba(212,160,23,.6)"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
                 <span>AI Tools</span>
               </div>
               <div class="card-badge-wrap"><span class="badge badge-ai">AI Tools</span></div>
+              <div class="card-read-time">9 min</div>
             </div>
             <div class="card-body">
               <div class="card-meta"><span>Dec 28, 2024</span><span>·</span><span>9 min read</span></div>
@@ -200,19 +266,20 @@
               <p class="card-excerpt">Large language models are transforming how traders research markets. Here's a practical framework for using GPT-4 and Claude to build actionable trade ideas — with real prompts.</p>
               <div class="card-footer">
                 <a href="blog.html" class="read-more">Read Article <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-                <span>James Holt</span>
+                <div class="card-author"><div class="author-circle">JH</div><span>James Holt</span></div>
               </div>
             </div>
           </article>
 
-          <!-- Article 6 -->
+          <!-- Article 6 — Crypto -->
           <article class="article-card" data-category="crypto">
             <div class="card-thumb">
               <div class="card-thumb-placeholder" style="background:linear-gradient(135deg,#2a1a00,#4a3010)">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="1.5" width="36" height="36"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/></svg>
                 <span style="color:rgba(245,158,11,.5)">Crypto</span>
               </div>
               <div class="card-badge-wrap"><span class="badge badge-crypto">Crypto</span></div>
+              <div class="card-read-time">5 min</div>
             </div>
             <div class="card-body">
               <div class="card-meta"><span>Dec 22, 2024</span><span>·</span><span>5 min read</span></div>
@@ -220,49 +287,52 @@
               <p class="card-excerpt">ML-driven yield aggregators are now autonomously rebalancing DeFi positions across hundreds of protocols. We explain how they work and the risks you need to manage.</p>
               <div class="card-footer">
                 <a href="blog.html" class="read-more">Read Article <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-                <span>Sara Chen</span>
+                <div class="card-author"><div class="author-circle author-sc">SC</div><span>Sara Chen</span></div>
               </div>
             </div>
           </article>
 
         </div><!-- /articles-grid -->
+
+        <!-- Load More -->
+        <div class="load-more-wrap animate-on-scroll">
+          <button id="load-more-btn" class="btn btn-outline">Load More Articles</button>
+        </div>
+
       </main>
 
       <!-- Sidebar -->
       <aside class="sidebar">
-        <!-- AdSense 300x250 -->
-        <!-- AdSense 300x250: paste your AdSense code here when ready -->
-
         <!-- Newsletter -->
-        <div class="sidebar-widget">
+        <div class="sidebar-widget animate-on-scroll">
           <h3>📬 Weekly Digest</h3>
-          <p style="font-size:.87rem;color:#5a6a7a;margin-bottom:16px;">Get top AI trading insights every Monday morning.</p>
-          <form class="newsletter-form" action="#" method="post">
-            <input type="email" placeholder="Your email address" required />
+          <p style="font-size:.87rem;color:var(--text-muted);margin-bottom:16px;">Get top AI trading insights every Monday morning.</p>
+          <form class="newsletter-form" action="#" method="post" novalidate>
+            <input type="email" placeholder="Your email address" required aria-label="Email address" />
             <button type="submit" class="btn btn-primary">Subscribe</button>
           </form>
           <p class="newsletter-note">No spam. Unsubscribe anytime.</p>
         </div>
 
         <!-- Popular Tags -->
-        <div class="sidebar-widget">
+        <div class="sidebar-widget animate-on-scroll">
           <h3>Popular Topics</h3>
           <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;">
-            <span class="badge badge-ai" style="cursor:default">Machine Learning</span>
-            <span class="badge badge-crypto" style="cursor:default">Bitcoin</span>
-            <span class="badge badge-trading" style="cursor:default">Algo Trading</span>
-            <span class="badge badge-finance" style="cursor:default">Robo-Advisors</span>
-            <span class="badge badge-ai" style="cursor:default">LLMs</span>
-            <span class="badge badge-crypto" style="cursor:default">DeFi</span>
-            <span class="badge badge-trading" style="cursor:default">NLP</span>
-            <span class="badge badge-finance" style="cursor:default">ETFs</span>
+            <span class="badge badge-ai">Machine Learning</span>
+            <span class="badge badge-crypto">Bitcoin</span>
+            <span class="badge badge-trading">Algo Trading</span>
+            <span class="badge badge-finance">Robo-Advisors</span>
+            <span class="badge badge-ai">LLMs</span>
+            <span class="badge badge-crypto">DeFi</span>
+            <span class="badge badge-trading">NLP</span>
+            <span class="badge badge-finance">ETFs</span>
           </div>
         </div>
 
         <!-- About Widget -->
-        <div class="sidebar-widget">
+        <div class="sidebar-widget animate-on-scroll">
           <h3>About AITradeHub</h3>
-          <p style="font-size:.87rem;color:#5a6a7a;line-height:1.65;">
+          <p style="font-size:.87rem;color:var(--text-muted);line-height:1.65;">
             We're a team of traders, quants, and AI researchers dedicated to making advanced trading intelligence accessible to everyone.
           </p>
           <a href="about.html" class="btn btn-outline btn-sm" style="margin-top:14px;display:inline-block;">Learn More</a>
@@ -273,22 +343,24 @@
   </div>
 </section>
 
+<!-- ── Footer Wave ────────────────────────────────────────── -->
+<div class="footer-wave" aria-hidden="true">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#060e1a"/>
+  </svg>
+</div>
+
+<!-- ── Footer ─────────────────────────────────────────────── -->
 <footer class="site-footer">
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="index.html" class="logo">AI<span>Trade</span>Hub<small>Smart AI Trading</small></a>
+        <a href="index.html" class="logo"><span class="logo-ai">AI</span><span class="logo-trade">TradeHub</span><small>Smart AI Trading</small></a>
         <p>Independent research and analysis at the intersection of artificial intelligence and financial markets.</p>
         <div class="footer-social">
-          <a href="#" class="footer-social-link" aria-label="Twitter/X">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-          </a>
-          <a href="#" class="footer-social-link" aria-label="LinkedIn">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          </a>
-          <a href="#" class="footer-social-link" aria-label="YouTube">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-          </a>
+          <a href="#" class="footer-social-link" aria-label="Twitter/X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="#" class="footer-social-link" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+          <a href="#" class="footer-social-link" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
         </div>
       </div>
       <div class="footer-col">
@@ -319,7 +391,7 @@
       </div>
     </div>
     <div class="footer-disclaimer">
-      ⚠️ <strong>Disclaimer:</strong> This website is for informational purposes only and does not constitute financial advice. 
+      ⚠️ <strong>Disclaimer:</strong> This website is for informational purposes only and does not constitute financial advice.
       Always do your own research before making investment decisions. Past performance is not indicative of future results.
     </div>
     <div class="footer-bottom">
@@ -328,6 +400,10 @@
     </div>
   </div>
 </footer>
+
+<button id="back-to-top" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
 
 <script src="js/main.js"></script>
 </body>
