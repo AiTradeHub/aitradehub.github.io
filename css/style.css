@@ -516,14 +516,18 @@ img { max-width: 100%; display: block; }
   display: flex;
   flex-direction: column;
   padding: calc(var(--nav-height) + 24px) 32px 40px;
-  transform: translateX(100%);
-  transition: transform var(--duration-slow) var(--ease);
+  transform: translateX(110%);
+  transition: transform .4s cubic-bezier(.4,0,.2,1), visibility .4s;
   overflow-y: auto;
+  visibility: hidden;
+  pointer-events: none;
 }
-
 .mobile-overlay.open {
   transform: translateX(0);
+  visibility: visible;
+  pointer-events: auto;
 }
+
 
 .mobile-overlay .mobile-nav-links {
   list-style: none;
