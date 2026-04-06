@@ -69,6 +69,7 @@
 
   /* Navbar */
   --nav-height:  68px;
+  --ticker-height: 36px;
 }
 
 /* ── Dark Mode ─────────────────────────────────────────── */
@@ -100,6 +101,11 @@ html {
   overflow-x: hidden;
   background: #060e1a;
 }
+
+/* Offset for fixed navbar + ticker */
+body > .ticker-wrap + *,
+body > .ticker-wrap ~ section:first-of-type { }
+.hero { margin-top: var(--ticker-height) !important; }
 
 body {
   font-family: var(--font-body);
@@ -592,12 +598,14 @@ body::before {
 /* ── Sponsors Ticker ───────────────────────────────────── */
 .ticker-wrap {
   background: var(--navy-deep);
-  padding-top: calc(var(--nav-height) + 7px);
-  padding-bottom: 7px;
+  padding: 7px 0;
   border-bottom: 2px solid var(--gold);
   overflow: hidden;
   white-space: nowrap;
-  position: relative;
+  position: fixed;
+  top: var(--nav-height);
+  left: 0;
+  right: 0;
   z-index: 999;
   margin-top: 0;
 }
