@@ -159,28 +159,18 @@
 
 <!-- ── Hero ──────────────────────────────────────────────── -->
 <section class="hero">
-  <canvas id="particles-canvas"></canvas>
-  <div class="container hero-parallax">
-    <div class="hero-content-wrap">
-    <div class="hero-inner">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="container hero-layout">
+
+    <!-- LEFT: Title + stats + buttons -->
+    <div class="hero-left">
       <div class="hero-eyebrow">🤖 AI-Powered Market Intelligence</div>
-      <h1>
-        <span id="typing-target" data-text="Smart Trading with Artificial Intelligence">Smart Trading with Artificial Intelligence</span>
-      </h1>
-      <p class="hero-lead">
-        Navigate markets with confidence. AITradeHub brings you in-depth research,
-        tool reviews, and actionable strategies at the frontier of AI and finance —
-        written by traders and technologists who live it daily.
-      </p>
+      <h1 class="hero-title">Smart Trading<br>with <span class="hero-title-gold">Artificial Intelligence</span></h1>
+      <p class="hero-lead">In-depth research, tool reviews, and actionable strategies at the frontier of AI and finance — written by traders and technologists who live it daily.</p>
       <div class="hero-actions">
-        <a href="blog.html" class="btn btn-primary">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-          Explore Articles
-        </a>
-        <a href="#newsletter" class="btn btn-ghost">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          Newsletter
-        </a>
+        <a href="blog.html" class="btn btn-primary">Explore Articles</a>
+        <a href="#newsletter" class="btn btn-ghost">Newsletter</a>
       </div>
       <div class="hero-stats">
         <div class="stat-item">
@@ -201,7 +191,9 @@
         </div>
       </div>
     </div>
-      <!-- ── News Ticker Widget ─────────────────────── -->
+
+    <!-- RIGHT: News widget -->
+    <div class="hero-right">
       <div class="news-widget">
         <div class="news-widget-header">
           <span class="news-dot"></span>
@@ -226,17 +218,17 @@
             </div>
             <div class="news-item">
               <span class="news-tag">Finance</span>
-              <p>Fed officials signal patience on rate cuts, citing persistent services inflation in latest meeting minutes</p>
+              <p>Fed officials signal patience on rate cuts, citing persistent services inflation</p>
               <span class="news-time">22 min ago</span>
             </div>
             <div class="news-item">
               <span class="news-tag crypto">Crypto</span>
-              <p>Ethereum ETF inflows reach $200M weekly high as DeFi activity surges on Layer 2 networks</p>
+              <p>Ethereum ETF inflows reach $200M weekly high as DeFi activity surges on Layer 2</p>
               <span class="news-time">31 min ago</span>
             </div>
             <div class="news-item">
               <span class="news-tag ai">AI</span>
-              <p>New reinforcement learning algorithm outperforms human traders in simulated forex markets by 34%</p>
+              <p>New reinforcement learning algorithm outperforms human traders in forex markets by 34%</p>
               <span class="news-time">45 min ago</span>
             </div>
             <div class="news-item">
@@ -246,17 +238,14 @@
             </div>
             <div class="news-item">
               <span class="news-tag">Trading</span>
-              <p>Volatility index (VIX) drops to 3-month low, signaling increased market confidence among traders</p>
+              <p>VIX drops to 3-month low, signaling increased market confidence among traders</p>
               <span class="news-time">1 hr ago</span>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="scroll-indicator" aria-hidden="true">
-    <span>scroll</span>
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+
   </div>
 </section>
 
