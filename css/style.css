@@ -2752,3 +2752,29 @@ body::before {
 [data-theme="dark"] .form-group textarea { background: var(--bg-card); border-color: rgba(255,255,255,.12); color: var(--text-primary); }
 [data-theme="dark"] .form-group .float-label { background: var(--bg-card); }
 [data-theme="dark"] .newsletter-form input[type="email"] { background: var(--bg-card); border-color: rgba(255,255,255,.12); color: var(--text-primary); }
+
+/* ── Hero content: always fully visible ── */
+.hero .hero-inner,
+.hero .hero-eyebrow,
+.hero h1,
+.hero .hero-lead,
+.hero .hero-actions,
+.hero .hero-stats,
+.hero .btn,
+.hero .scroll-indicator {
+  opacity: 1 !important;
+  transform: none !important;
+  animation: none !important;
+  transition: color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease !important;
+}
+
+.hero h1 { color: #ffffff !important; }
+.hero .hero-lead { color: rgba(220,235,255,0.95) !important; }
+.hero .btn-ghost {
+  background: rgba(255,255,255,0.15) !important;
+  color: #fff !important;
+  border-color: rgba(255,255,255,0.4) !important;
+}
+.hero .btn-ghost:hover {
+  background: rgba(255,255,255,0.28) !important;
+}
