@@ -11,7 +11,7 @@
 </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact Us — Get in Touch | AITradeHub</title>
+  <title>Contact Us | AITradeHub</title>
   <meta name="description" content="Have a question, story tip, partnership inquiry, or feedback for AITradeHub? Reach out using our contact form or connect with us on social media." />
   <link rel="canonical" href="https://aitradehub.github.io/contact.html" />
 
@@ -20,36 +20,331 @@
   <meta property="og:description" content="Reach out to the AITradeHub editorial team with questions, tips, or partnership inquiries." />
   <meta property="og:image"       content="https://aitradehub.github.io/images/og-contact.png" />
   <meta property="og:url"         content="https://aitradehub.github.io/contact.html" />
-
   <meta name="twitter:card"        content="summary" />
   <meta name="twitter:title"       content="Contact AITradeHub" />
   <meta name="twitter:description" content="Get in touch with the AITradeHub team." />
-  <meta name="twitter:image"       content="https://aitradehub.github.io/images/og-contact.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ── Contact page specific styles ── */
+    .contact-hero-section {
+      background: linear-gradient(135deg, #0a1628 0%, #1a2a4a 60%, #0d2137 100%);
+      padding: 100px 0 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-hero-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 100%, rgba(212,160,23,.15) 0%, transparent 70%);
+    }
+    .contact-hero-section .breadcrumb { justify-content: center; margin-bottom: 20px; }
+    .contact-hero-section h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: #fff;
+      margin-bottom: 16px;
+    }
+    .contact-hero-section h1 span { color: var(--gold); }
+    .contact-hero-section p {
+      color: rgba(255,255,255,.75);
+      font-size: 1.1rem;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    /* Contact layout */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 40px;
+      align-items: start;
+      padding: 72px 0;
+    }
+    @media (max-width: 900px) {
+      .contact-layout { grid-template-columns: 1fr; }
+    }
+
+    /* Floating label form */
+    .contact-card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 32px rgba(10,22,40,.08);
+      padding: 40px;
+    }
+    .contact-card h2 {
+      font-size: 1.6rem;
+      color: var(--navy);
+      margin-bottom: 32px;
+    }
+    .form-row-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    @media (max-width: 560px) { .form-row-2 { grid-template-columns: 1fr; } }
+
+    .floating-group {
+      position: relative;
+      margin-bottom: 24px;
+    }
+    .floating-group label {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      font-size: .9rem;
+      color: #8fa3b8;
+      pointer-events: none;
+      transition: all .2s cubic-bezier(.4,0,.2,1);
+      background: #fff;
+      padding: 0 4px;
+    }
+    .floating-group input,
+    .floating-group select,
+    .floating-group textarea {
+      width: 100%;
+      padding: 16px;
+      border: 2px solid #e2e8f0;
+      border-radius: 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: .95rem;
+      color: var(--navy);
+      background: #fff;
+      transition: border-color .2s, box-shadow .2s;
+      outline: none;
+      appearance: none;
+    }
+    .floating-group textarea { resize: vertical; min-height: 140px; }
+    .floating-group select { cursor: pointer; }
+
+    .floating-group input:focus,
+    .floating-group select:focus,
+    .floating-group textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(212,160,23,.15);
+    }
+    .floating-group input:focus + label,
+    .floating-group input:not(:placeholder-shown) + label,
+    .floating-group select:focus + label,
+    .floating-group select.has-value + label,
+    .floating-group textarea:focus + label,
+    .floating-group textarea:not(:placeholder-shown) + label {
+      top: -9px;
+      font-size: .75rem;
+      color: var(--gold);
+    }
+    .floating-group.error input,
+    .floating-group.error select,
+    .floating-group.error textarea {
+      border-color: #e53e3e;
+      box-shadow: 0 0 0 3px rgba(229,62,62,.12);
+      animation: shake .35s cubic-bezier(.36,.07,.19,.97);
+    }
+    .floating-group.success input,
+    .floating-group.success textarea {
+      border-color: #38a169;
+      box-shadow: 0 0 0 3px rgba(56,161,105,.12);
+    }
+    .field-error {
+      display: none;
+      font-size: .78rem;
+      color: #e53e3e;
+      margin-top: 4px;
+    }
+    .floating-group.error .field-error { display: block; }
+
+    @keyframes shake {
+      10%, 90% { transform: translateX(-2px); }
+      20%, 80% { transform: translateX(3px); }
+      30%, 50%, 70% { transform: translateX(-4px); }
+      40%, 60% { transform: translateX(4px); }
+    }
+
+    /* Submit button */
+    .submit-btn {
+      width: 100%;
+      padding: 16px;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: .5px;
+      position: relative;
+      overflow: hidden;
+      border: none;
+      cursor: pointer;
+    }
+    .submit-btn .btn-text { transition: opacity .2s; }
+    .submit-btn .btn-spinner {
+      display: none;
+      position: absolute;
+      inset: 0;
+      align-items: center;
+      justify-content: center;
+    }
+    .submit-btn.loading .btn-text { opacity: 0; }
+    .submit-btn.loading .btn-spinner { display: flex; }
+    .spinner-ring {
+      width: 22px; height: 22px;
+      border: 3px solid rgba(255,255,255,.3);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin .7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Success / Error message */
+    .form-message {
+      display: none;
+      border-radius: 10px;
+      padding: 16px 20px;
+      font-size: .9rem;
+      font-weight: 500;
+      margin-top: 16px;
+      transform: translateY(10px);
+      opacity: 0;
+      transition: all .35s cubic-bezier(.4,0,.2,1);
+    }
+    .form-message.show {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .form-message.success { background: #f0fff4; border: 1.5px solid #38a169; color: #276749; }
+    .form-message.error-msg { background: #fff5f5; border: 1.5px solid #e53e3e; color: #c53030; }
+
+    /* Info sidebar */
+    .contact-sidebar { display: flex; flex-direction: column; gap: 24px; }
+
+    .info-card {
+      background: var(--navy);
+      border-radius: 16px;
+      padding: 32px;
+      color: #fff;
+    }
+    .info-card h3 { color: #fff; font-size: 1.2rem; margin-bottom: 24px; }
+
+    .info-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+    .info-item:last-of-type { margin-bottom: 0; }
+    .info-icon {
+      width: 40px; height: 40px;
+      background: rgba(212,160,23,.15);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .info-item strong { display: block; color: var(--gold); font-size: .82rem; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 2px; }
+    .info-item span { font-size: .88rem; color: rgba(255,255,255,.75); }
+
+    .info-social { display: flex; gap: 10px; margin-top: 24px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.1); }
+    .info-social a {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.08);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,.8);
+      transition: background .2s, color .2s;
+    }
+    .info-social a:hover { background: var(--gold); color: var(--navy); }
+    .info-social svg { width: 16px; height: 16px; }
+
+    .faq-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 4px 20px rgba(10,22,40,.07);
+    }
+    .faq-card h3 { color: var(--navy); margin-bottom: 20px; font-size: 1.1rem; }
+    .faq-item { margin-bottom: 18px; padding-bottom: 18px; border-bottom: 1px solid #f0f4f8; }
+    .faq-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+    .faq-item strong { display: block; font-size: .88rem; color: var(--navy); margin-bottom: 6px; }
+    .faq-item p { font-size: .82rem; color: #5a6a7a; line-height: 1.6; margin: 0; }
+  </style>
 </head>
 <body>
 
+<!-- ── Site Header ──────────────────────────────────────── -->
 <header class="site-header">
   <div class="container">
-    <nav class="navbar">
-      <a href="index.html" class="logo">AI<span>Trade</span>Hub<small>Smart AI Trading</small></a>
-      <ul class="nav-links">
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+      <a href="index.html" class="logo" aria-label="AITradeHub Home">
+        <span class="logo-ai">AI</span><span class="logo-trade">TradeHub</span>
+        <small>Smart AI Trading</small>
+      </a>
+
+      <ul class="nav-links" role="list">
         <li><a href="index.html">Home</a></li>
         <li><a href="blog.html">Blog</a></li>
+        <li class="nav-dropdown">
+          <a href="#" aria-haspopup="true">
+            Categories
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </a>
+          <div class="dropdown-menu" role="menu">
+            <a href="blog.html?cat=ai" role="menuitem"><span class="cat-dot cat-ai"></span> AI Tools</a>
+            <a href="blog.html?cat=crypto" role="menuitem"><span class="cat-dot cat-crypto"></span> Crypto</a>
+            <a href="blog.html?cat=trading" role="menuitem"><span class="cat-dot cat-trading"></span> Trading</a>
+            <a href="blog.html?cat=finance" role="menuitem"><span class="cat-dot cat-finance"></span> Finance</a>
+          </div>
+        </li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html" class="active">Contact</a></li>
-        <li><a href="blog.html" class="btn btn-primary btn-sm">Explore Articles</a></li>
+        <li>
+          <div class="nav-actions">
+            <button class="dark-mode-btn" aria-label="Toggle dark mode" title="Toggle dark mode">
+              <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+              <svg class="icon-sun"  width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            </button>
+            <a href="blog.html" class="btn btn-primary btn-sm">Explore Articles</a>
+          </div>
+        </li>
       </ul>
-      <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+
+      <div style="display:flex;align-items:center;gap:10px;">
+        <button class="dark-mode-btn" aria-label="Toggle dark mode" id="dm-mobile">
+          <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+          <svg class="icon-sun"  width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/></svg>
+        </button>
+        <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </nav>
   </div>
 </header>
+
+<!-- ── Mobile Overlay ────────────────────────────────────── -->
+<div class="mobile-overlay" role="dialog" aria-label="Mobile navigation">
+  <ul class="mobile-nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="blog.html">Categories</a></li>
+    <div class="mobile-cats">
+      <a href="blog.html?cat=ai"><span class="cat-dot cat-ai" style="display:inline-block;margin-right:8px;"></span>AI Tools</a>
+      <a href="blog.html?cat=crypto"><span class="cat-dot cat-crypto" style="display:inline-block;margin-right:8px;"></span>Crypto</a>
+      <a href="blog.html?cat=trading"><span class="cat-dot cat-trading" style="display:inline-block;margin-right:8px;"></span>Trading</a>
+      <a href="blog.html?cat=finance"><span class="cat-dot cat-finance" style="display:inline-block;margin-right:8px;"></span>Finance</a>
+    </div>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="mobile-actions">
+    <a href="blog.html" class="btn btn-primary">Explore Articles</a>
+    <div class="dark-toggle-row dark-mode-btn" role="button" aria-label="Toggle dark mode">
+      <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+      <svg class="icon-sun"  width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/></svg>
+      <span>Toggle Dark Mode</span>
+    </div>
+  </div>
+</div>
 
 <!-- ── Sponsors Ticker ──────────────────────────────────── -->
 <div class="ticker-wrap">
@@ -65,148 +360,168 @@
   </div>
 </div>
 
-<!-- AdSense Leaderboard 728x90: paste your AdSense code here when ready -->
-
-<!-- Contact Hero -->
-<section class="contact-hero">
+<!-- ── Contact Hero ──────────────────────────────────────── -->
+<section class="contact-hero-section reveal">
   <div class="container">
     <nav class="breadcrumb" aria-label="Breadcrumb">
       <a href="index.html">Home</a><span>›</span><span>Contact</span>
     </nav>
-    <h1>Get in Touch</h1>
+    <h1>Get in <span>Touch</span></h1>
     <p>We'd love to hear from you — whether it's a question, a story tip, or a partnership inquiry.</p>
   </div>
 </section>
 
-<!-- Contact Form Section -->
-<section class="section">
-  <div class="container">
-    <div class="contact-grid">
+<!-- ── Contact Content ───────────────────────────────────── -->
+<div class="container">
+  <div class="contact-layout">
 
-      <!-- Form -->
-      <div class="contact-form">
-        <h2>Send Us a Message</h2>
+    <!-- ── Form ── -->
+    <div class="contact-card reveal">
+      <h2>Send Us a Message</h2>
 
-        <form action="#" method="post" novalidate>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="contact-name">Full Name <span style="color:#e53e3e;">*</span></label>
-              <input type="text" id="contact-name" name="name" placeholder="Jane Smith" required autocomplete="name" />
-            </div>
-            <div class="form-group">
-              <label for="contact-email">Email Address <span style="color:#e53e3e;">*</span></label>
-              <input type="email" id="contact-email" name="email" placeholder="jane@example.com" required autocomplete="email" />
-            </div>
+      <form id="contactForm" action="#" method="post" novalidate>
+
+        <div class="form-row-2">
+          <!-- Name -->
+          <div class="floating-group" id="fg-name">
+            <input type="text" id="contact-name" name="name" placeholder=" " required autocomplete="name" />
+            <label for="contact-name">Full Name *</label>
+            <span class="field-error">Please enter your name.</span>
           </div>
-
-          <div class="form-group">
-            <label for="contact-subject">Subject <span style="color:#e53e3e;">*</span></label>
-            <select id="contact-subject" name="subject" required>
-              <option value="" disabled selected>Select a topic…</option>
-              <option value="general">General Inquiry</option>
-              <option value="editorial">Editorial / Story Tip</option>
-              <option value="partnership">Partnership / Advertising</option>
-              <option value="affiliate">Affiliate Program</option>
-              <option value="correction">Content Correction</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="contact-message">Message <span style="color:#e53e3e;">*</span></label>
-            <textarea id="contact-message" name="message" placeholder="Tell us what's on your mind…" required rows="6"></textarea>
-          </div>
-
-          <button type="submit" class="btn btn-primary" style="width:100%;font-size:1rem;padding:14px;">
-            Send Message →
-          </button>
-
-          <p style="font-size:.78rem;color:#8fa3b8;margin-top:14px;text-align:center;">
-            🔒 Your information is kept private. We respond within 1–2 business days.
-          </p>
-        </form>
-      </div>
-
-      <!-- Contact Info -->
-      <div>
-        <div class="contact-info-card">
-          <h3>Contact Information</h3>
-
-          <div class="contact-info-item">
-            <div class="contact-info-icon">✉️</div>
-            <div>
-              <strong>Editorial</strong>
-              <span>editorial@aitradehub.github.io</span>
-            </div>
-          </div>
-
-          <div class="contact-info-item">
-            <div class="contact-info-icon">🤝</div>
-            <div>
-              <strong>Partnerships &amp; Advertising</strong>
-              <span>partnerships@aitradehub.github.io</span>
-            </div>
-          </div>
-
-          <div class="contact-info-item">
-            <div class="contact-info-icon">🌐</div>
-            <div>
-              <strong>Website</strong>
-              <span>aitradehub.github.io</span>
-            </div>
-          </div>
-
-          <div class="contact-info-item">
-            <div class="contact-info-icon">⏱️</div>
-            <div>
-              <strong>Response Time</strong>
-              <span>1–2 business days (Mon–Fri)</span>
-            </div>
-          </div>
-
-          <h3 style="color:#fff;margin-top:28px;margin-bottom:16px;">Follow Us</h3>
-          <div class="social-links">
-            <a href="#" class="social-link" aria-label="Twitter/X">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            </a>
-            <a href="#" class="social-link" aria-label="LinkedIn">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/></svg>
-            </a>
-            <a href="#" class="social-link" aria-label="YouTube">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-            </a>
+          <!-- Email -->
+          <div class="floating-group" id="fg-email">
+            <input type="email" id="contact-email" name="email" placeholder=" " required autocomplete="email" />
+            <label for="contact-email">Email Address *</label>
+            <span class="field-error">Please enter a valid email.</span>
           </div>
         </div>
 
-        <!-- FAQ -->
-        <div class="sidebar-widget" style="margin-top:28px;">
-          <h3>Common Questions</h3>
-          <div style="margin-top:8px;display:flex;flex-direction:column;gap:16px;">
-            <div>
-              <strong style="font-size:.9rem;color:#0a1628;display:block;margin-bottom:4px;">Do you accept guest posts?</strong>
-              <p style="font-size:.83rem;color:#5a6a7a;line-height:1.6;">Yes — we accept pitches from qualified practitioners. Please use the contact form and select "Editorial / Story Tip."</p>
-            </div>
-            <div>
-              <strong style="font-size:.9rem;color:#0a1628;display:block;margin-bottom:4px;">How do I submit a tool for review?</strong>
-              <p style="font-size:.83rem;color:#5a6a7a;line-height:1.6;">Contact us via the Partnership inquiry option. We review all submissions independently — paid placement does not guarantee a positive review.</p>
-            </div>
-            <div>
-              <strong style="font-size:.9rem;color:#0a1628;display:block;margin-bottom:4px;">Can I republish your articles?</strong>
-              <p style="font-size:.83rem;color:#5a6a7a;line-height:1.6;">Our content is copyrighted. Brief excerpts with attribution and a link are permitted. Full republication requires written permission.</p>
-            </div>
+        <!-- Subject -->
+        <div class="floating-group" id="fg-subject">
+          <select id="contact-subject" name="subject" required>
+            <option value="" disabled selected></option>
+            <option value="general">General Inquiry</option>
+            <option value="editorial">Editorial / Story Tip</option>
+            <option value="partnership">Partnership / Advertising</option>
+            <option value="affiliate">Affiliate Program</option>
+            <option value="correction">Content Correction</option>
+            <option value="other">Other</option>
+          </select>
+          <label for="contact-subject">Subject *</label>
+          <span class="field-error">Please select a subject.</span>
+        </div>
+
+        <!-- Message -->
+        <div class="floating-group" id="fg-message">
+          <textarea id="contact-message" name="message" placeholder=" " required></textarea>
+          <label for="contact-message">Message *</label>
+          <span class="field-error">Please write a message (min. 10 characters).</span>
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" class="btn btn-primary submit-btn">
+          <span class="btn-text">Send Message →</span>
+          <span class="btn-spinner"><span class="spinner-ring"></span></span>
+        </button>
+
+        <p style="font-size:.78rem;color:#8fa3b8;margin-top:14px;text-align:center;">
+          🔒 Your information is kept private. We respond within 1–2 business days.
+        </p>
+
+        <!-- Messages -->
+        <div class="form-message success" id="formSuccess">
+          ✅ <strong>Message sent!</strong> Thank you for reaching out. We'll get back to you within 1–2 business days.
+        </div>
+        <div class="form-message error-msg" id="formError">
+          ❌ Something went wrong. Please check the form and try again.
+        </div>
+      </form>
+    </div>
+
+    <!-- ── Sidebar ── -->
+    <div class="contact-sidebar">
+
+      <!-- Info card -->
+      <div class="info-card reveal">
+        <h3>Contact Information</h3>
+
+        <div class="info-item">
+          <div class="info-icon">✉️</div>
+          <div>
+            <strong>Editorial</strong>
+            <span>editorial@aitradehub.com</span>
           </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">🤝</div>
+          <div>
+            <strong>Partnerships & Advertising</strong>
+            <span>partnerships@aitradehub.com</span>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">🌐</div>
+          <div>
+            <strong>Website</strong>
+            <span>aitradehub.github.io</span>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">⏱️</div>
+          <div>
+            <strong>Response Time</strong>
+            <span>1–2 business days (Mon–Fri)</span>
+          </div>
+        </div>
+
+        <div class="info-social">
+          <a href="#" aria-label="Twitter/X">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="#" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/></svg>
+          </a>
+          <a href="#" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <div class="faq-card reveal">
+        <h3>Common Questions</h3>
+        <div class="faq-item">
+          <strong>Do you accept guest posts?</strong>
+          <p>Yes — we accept pitches from qualified practitioners. Select "Editorial / Story Tip" in the form.</p>
+        </div>
+        <div class="faq-item">
+          <strong>How do I submit a tool for review?</strong>
+          <p>Use the Partnership inquiry option. Paid placement does not guarantee a positive review.</p>
+        </div>
+        <div class="faq-item">
+          <strong>Can I republish your articles?</strong>
+          <p>Brief excerpts with attribution and a link are permitted. Full republication requires written permission.</p>
         </div>
       </div>
 
     </div>
   </div>
-</section>
+</div>
 
+<!-- ── Footer ───────────────────────────────────────────── -->
 <footer class="site-footer">
+  <div class="footer-wave">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#0a1628"/>
+    </svg>
+  </div>
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="index.html" class="logo">AI<span>Trade</span>Hub<small>Smart AI Trading</small></a>
+        <a href="index.html" class="logo">
+          <span class="logo-ai">AI</span><span class="logo-trade">TradeHub</span>
+          <small>Smart AI Trading</small>
+        </a>
         <p>Independent research and analysis at the intersection of artificial intelligence and financial markets.</p>
         <div class="footer-social">
           <a href="#" class="footer-social-link" aria-label="Twitter/X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
@@ -219,6 +534,7 @@
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="blog.html">Blog</a></li>
+          <li><a href="article.html">Featured Article</a></li>
           <li><a href="about.html">About Us</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
@@ -233,17 +549,26 @@
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Legal</h4>
-        <ul>
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Terms of Service</a></li>
-          <li><a href="#">Affiliate Disclosure</a></li>
-        </ul>
+        <h4>Newsletter</h4>
+        <div class="footer-newsletter">
+          <input type="email" placeholder="Your email…" aria-label="Newsletter email" />
+          <button class="btn btn-primary btn-sm">Subscribe</button>
+        </div>
+        <div style="margin-top:20px;">
+          <h4>Legal</h4>
+          <ul style="margin-top:0;">
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Affiliate Disclosure</a></li>
+          </ul>
+        </div>
       </div>
     </div>
+
     <div class="footer-disclaimer">
-      ⚠️ <strong>Disclaimer:</strong> This website is for informational purposes only and does not constitute financial advice. 
+      ⚠️ <strong>Disclaimer:</strong> This website is for informational purposes only and does not constitute financial advice.
       Always do your own research before making investment decisions. Past performance is not indicative of future results.
+      Trading involves significant risk of loss.
     </div>
     <div class="footer-bottom">
       <span>© 2025 AITradeHub. All rights reserved.</span>
@@ -252,6 +577,84 @@
   </div>
 </footer>
 
+<!-- ── Back to Top ───────────────────────────────────────── -->
+<button id="back-to-top" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
 <script src="js/main.js"></script>
+<script>
+/* ── Contact form validation & submit ── */
+(function(){
+  const form    = document.getElementById('contactForm');
+  const success = document.getElementById('formSuccess');
+  const errMsg  = document.getElementById('formError');
+
+  function showMsg(el) {
+    el.style.display = 'block';
+    requestAnimationFrame(() => el.classList.add('show'));
+  }
+
+  function validate(field, fg, test) {
+    if (!test) {
+      fg.classList.add('error');
+      fg.classList.remove('success');
+      return false;
+    }
+    fg.classList.remove('error');
+    fg.classList.add('success');
+    return true;
+  }
+
+  // Live validation on blur
+  document.getElementById('contact-name').addEventListener('blur', function(){
+    validate(this, document.getElementById('fg-name'), this.value.trim().length >= 2);
+  });
+  document.getElementById('contact-email').addEventListener('blur', function(){
+    validate(this, document.getElementById('fg-email'), /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.value));
+  });
+  document.getElementById('contact-subject').addEventListener('change', function(){
+    const fg = document.getElementById('fg-subject');
+    if (this.value) { fg.classList.remove('error'); fg.classList.add('success'); fg.querySelector('select').classList.add('has-value'); }
+    else fg.classList.add('error');
+  });
+  document.getElementById('contact-message').addEventListener('blur', function(){
+    validate(this, document.getElementById('fg-message'), this.value.trim().length >= 10);
+  });
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    const name    = document.getElementById('contact-name');
+    const email   = document.getElementById('contact-email');
+    const subject = document.getElementById('contact-subject');
+    const message = document.getElementById('contact-message');
+
+    const v1 = validate(name,    document.getElementById('fg-name'),    name.value.trim().length >= 2);
+    const v2 = validate(email,   document.getElementById('fg-email'),   /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value));
+    const v3 = validate(subject, document.getElementById('fg-subject'), subject.value !== '');
+    const v4 = validate(message, document.getElementById('fg-message'), message.value.trim().length >= 10);
+
+    if (!v1 || !v2 || !v3 || !v4) {
+      showMsg(errMsg);
+      setTimeout(() => { errMsg.classList.remove('show'); setTimeout(()=>errMsg.style.display='none', 350); }, 4000);
+      return;
+    }
+
+    // Show loading
+    const btn = form.querySelector('.submit-btn');
+    btn.classList.add('loading');
+    btn.disabled = true;
+
+    // Simulate send (no backend)
+    setTimeout(() => {
+      btn.classList.remove('loading');
+      btn.disabled = false;
+      form.reset();
+      document.querySelectorAll('.floating-group').forEach(fg => fg.classList.remove('success','error'));
+      showMsg(success);
+    }, 1800);
+  });
+})();
+</script>
 </body>
 </html>
