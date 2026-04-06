@@ -207,37 +207,11 @@
      6. TYPING ANIMATION (Hero headline)
   ───────────────────────────────────────────────── */
   function initTyping() {
+    // Typing animation removed — show text immediately
     const target = document.getElementById('typing-target');
     if (!target) return;
-
     const text = target.getAttribute('data-text') || target.textContent;
-    target.textContent = '';
-    const cursor = document.createElement('span');
-    cursor.className = 'typing-cursor';
-    target.parentNode.insertBefore(cursor, target.nextSibling);
-
-    let i = 0;
-    const speed = 45;
-
-    function type() {
-      if (i < text.length) {
-        target.textContent += text[i++];
-        setTimeout(type, speed + Math.random() * 30);
-      } else {
-        // Remove cursor after typing ends (or keep blinking)
-        setTimeout(() => {
-          cursor.style.animation = 'none';
-          cursor.style.opacity = '0';
-        }, 3000);
-
-        // Fade in subheadline
-        const lead = $('.hero-lead');
-        if (lead) lead.style.animationPlayState = 'running';
-      }
-    }
-
-    // Start after a brief delay
-    setTimeout(type, 400);
+    target.textContent = text;
   }
 
   /* ─────────────────────────────────────────────────

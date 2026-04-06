@@ -277,10 +277,12 @@ img { max-width: 100%; display: block; }
   left: 0;
   right: 0;
   z-index: 1000;
-  background: transparent;
+  background: rgba(10, 22, 40, 0.97);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 2px 20px rgba(0,0,0,.4);
   transition: background var(--duration-base) var(--ease),
-              box-shadow var(--duration-base) var(--ease),
-              backdrop-filter var(--duration-base) var(--ease);
+              box-shadow var(--duration-base) var(--ease);
 }
 
 .site-header.solid,
@@ -672,35 +674,31 @@ body::before {
   padding: var(--space-2xl) 0 var(--space-xl);
 }
 
-/* Animated gradient background */
+/* Background image with dark overlay */
 .hero::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg,
-    #0a1628 0%,
-    #0d2040 30%,
-    #122a50 60%,
-    #0f1e38 100%);
-  background-size: 400% 400%;
-  animation: gradient-shift 12s ease infinite;
+  background-image: url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1600&q=80&fm=jpg&fit=crop');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.25;
+  z-index: 0;
 }
 
-@keyframes gradient-shift {
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* Grid pattern overlay */
+/* Dark gradient overlay so text is always readable */
 .hero::after {
   content: '';
   position: absolute;
   inset: 0;
-  background-image:
-    linear-gradient(rgba(212,160,23,.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(212,160,23,.03) 1px, transparent 1px);
-  background-size: 60px 60px;
+  background: linear-gradient(
+    135deg,
+    rgba(10,22,40,0.92) 0%,
+    rgba(10,22,40,0.80) 50%,
+    rgba(10,22,40,0.88) 100%
+  );
+  z-index: 0;
   pointer-events: none;
 }
 
