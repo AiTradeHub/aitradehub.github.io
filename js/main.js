@@ -118,4 +118,22 @@
   `;
   document.head.appendChild(style);
 
+  /* ── Sponsors Ticker ──────────────────────────────────── */
+  const track = document.getElementById('tickerTrack');
+  if (track) {
+    // Clone content until it's at least 3x the viewport width
+    const fill = () => {
+      const needed = window.innerWidth * 3;
+      while (track.scrollWidth < needed) {
+        const clone = track.innerHTML;
+        track.innerHTML += clone;
+      }
+      // Duration: 1px per 18ms — adjust second number for speed
+      const duration = (track.scrollWidth / 2) / 60; // px per second = 60
+      track.style.animation = `ticker-scroll ${duration}s linear infinite`;
+    };
+    fill();
+    window.addEventListener('resize', fill);
+  }
+
 })();
