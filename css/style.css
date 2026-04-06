@@ -700,7 +700,7 @@ body::before {
     rgba(10,22,40,0.80) 50%,
     rgba(10,22,40,0.88) 100%
   );
-  z-index: 0;
+  z-index: 1;
   pointer-events: none;
 }
 
@@ -767,7 +767,6 @@ body::before {
   margin-bottom: 40px;
   line-height: 1.8;
   opacity: 1;
-  animation: fade-in 0.8s var(--ease) 2.5s forwards;
 }
 
 .hero-actions {
