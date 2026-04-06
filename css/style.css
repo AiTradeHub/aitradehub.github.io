@@ -97,6 +97,7 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  overflow-x: hidden;
 }
 
 body {
@@ -108,7 +109,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   transition: background var(--duration-slow) var(--ease),
               color var(--duration-slow) var(--ease);
-  overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -283,6 +283,7 @@ img { max-width: 100%; display: block; }
               backdrop-filter var(--duration-base) var(--ease);
 }
 
+.site-header.solid,
 .site-header.scrolled {
   background: rgba(10, 22, 40, 0.96);
   backdrop-filter: blur(12px);
@@ -594,6 +595,7 @@ body::before {
   white-space: nowrap;
   position: relative;
   z-index: 999;
+  margin-top: var(--nav-height);
 }
 
 .ticker-wrap::before,
