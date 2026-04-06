@@ -799,4 +799,15 @@
     init();
   }
 
+
+  /* ── News Widget infinite scroll ───────────────────── */
+  function initNewsWidget() {
+    const track = document.getElementById('newsTrack');
+    if (!track) return;
+    // Clone items for infinite loop
+    const clone = track.innerHTML;
+    track.innerHTML += clone;
+  }
+  initNewsWidget();
+
 })();
