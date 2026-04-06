@@ -592,9 +592,9 @@ body::before {
 /* ── Sponsors Ticker ───────────────────────────────────── */
 .ticker-wrap {
   background: var(--navy-deep);
-  margin-top: var(--nav-height);
+  padding-top: calc(var(--nav-height) + 7px);
+  padding-bottom: 7px;
   border-bottom: 2px solid var(--gold);
-  padding: 7px 0;
   overflow: hidden;
   white-space: nowrap;
   position: relative;
